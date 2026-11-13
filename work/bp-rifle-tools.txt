@@ -1,0 +1,114 @@
+[
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.SetPinValue",
+    "description": "Sets the value of a Blueprint graph pin. Must be an input pin that supports default values."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.SetNodePosition",
+    "description": "Sets a new position for the node."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.SetNodeNotePinned",
+    "description": "Sets whether a node's note bubble is pinned (always visible), vs. only shown on hover."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.SetNodeNote",
+    "description": "Sets the note text on a Blueprint node (its comment bubble). The bubble is made immediately\nvisible in the graph editor when a non-empty note is set."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.RetargetNodeClass",
+    "description": "Replaces a node's baked-in class reference from OldClass to NewClass in place, and\nreconstructs the node so its pins reflect the new type. A no-op if the node already\nreferences NewClass. The Blueprint must be recompiled after retargeting is complete."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.RemoveNodePin",
+    "description": "Removes a specific pin from a node that supports dynamic pin removal."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.RemoveFunctionGraph",
+    "description": "Removes a function graph or event dispatcher from the Blueprint."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.ListGraphs",
+    "description": "Lists all graphs in the Blueprint."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.IsNodeNotePinned",
+    "description": "Returns whether a node's note bubble is pinned (always visible)."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.GetPinValue",
+    "description": "Gets the value of a Blueprint graph pin. Must be an input pin that supports default values."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.GetNodeTypePins",
+    "description": "Returns the pin names and types for a node type."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.GetNodesInCommentBox",
+    "description": "Returns the nodes grouped inside a comment box."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.GetNodeNote",
+    "description": "Returns the note text on a Blueprint node (the small comment bubble shown over an\nindividual node)."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.GetNodeInfos",
+    "description": "Retrieves detailed information for a list of Blueprint graph nodes."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.GetGraph",
+    "description": "Retrieves a specific graph from a Blueprint asset by name."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.GetConnectedSubgraph",
+    "description": "Returns detailed information for all nodes connected to the given node, including itself."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.FindNodeTypes",
+    "description": "Finds node types that can be created in a particular graph matching the search criteria. To\nlist all nodes within a category, use a trailing pipe (e.g. \"Utilities|FlowControl|\").\nThe results are palette type ids (Category|Name), not Graph DSL references."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.FindNodes",
+    "description": "Finds nodes in a graph by title, class, and/or execution role. All filters are optional and\nANDed together."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.FindNodeCategories",
+    "description": "Retrieves the available node categories in a Blueprint graph, optionally filtered by\ncompatible pin types. Categories are everything before the last '|' in a node type_id."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.DisconnectPins",
+    "description": "Breaks two connected pins."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.DiffGraphs",
+    "description": "Compares two versions of a graph with the same matching the editor's Diff window uses."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.DeleteNode",
+    "description": "Deletes the node from its graph."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.CreateNode",
+    "description": "Adds a new node to the graph."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.ConnectPins",
+    "description": "Makes a connection between source (output) and dest (input) pins."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.ArrangeNodes",
+    "description": "Arranges Nodes in a readable left-to-right layout, using every other node in Graph as a\nfixed anchor so the arranged subset integrates cleanly with the rest of the graph. Comment\nboxes whose members are all in the touched region are rebuilt to fit."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.ArrangeGraphLayered",
+    "description": "Arranges a whole graph in a readable left-to-right layout, per connected component: each\ncomponent becomes a horizontal band, execution chains hold a single straight row, and\ncomment boxes are honored as nested groups and rebuilt around their members. Does not\nrequire an open graph editor."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.AddNodePin",
+    "description": "Adds a pin to a node that supports dynamic pin addition (Switch, Sequence, commutative\nbinary operators like Add/Multiply, Make Array, etc.)."
+  },
+  {
+    "name": "BlueprintToolsets.BlueprintToolset.AddFunctionGraph",
+    "description": "Adds a function graph to the Blueprint.\n\nIf GraphName matches an inherited overridable function, the new graph is a function-graph\noverride of that function. Idempotent - if a graph with that name already exists, that\ngraph is returned."
+  }
+]

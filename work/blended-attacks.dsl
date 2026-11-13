@@ -1,0 +1,27 @@
+(event `SwordAttack`
+  (if (and (not (`self.IsAttacking`)) (not (`self.IsDead`)) (not (`self.SceneLocked`)))
+    (set `self.IsAttacking` true)
+    ; Each combatant independently alternates A, B, A, B on accepted attacks.
+    (if (`self.UseSecondAttack`)
+      (set `self.AttackAnimation` (`self.AttackAnimationB`))
+      (set `self.AttackImpactTime` (/ 0.60 (`self.AttackPlayRate`)))
+      (set `self.LastAttackVariant` 2)
+      (else
+        (set `self.AttackAnimation` (`self.AttackAnimationA`))
+        (set `self.AttackImpactTime` (/ 0.50 (`self.AttackPlayRate`)))
+        (set `self.LastAttackVariant` 1)))
+    (set `self.UseSecondAttack` (not (`self.UseSecondAttack`)))
+    (`MovementComponent.StopMovementImmediately` (`self.CharacterMovement`))
+    (`AnimInstance.PlaySlotAnimationAsDynamicMontage` (`SkeletalMeshComponent.GetAnimInstance` (`self.Mesh`)) (`self.AttackAnimation`) "DefaultSlot" 0.08 0.12 (`self.AttackPlayRate`) 1 -1.0 0.0)
+    (`KismetSystemLibrary.Delay` (`self.AttackImpactTime`))
+    (if (and (not (`self.IsDead`)) (not (`self.SceneLocked`)))
+      (`self.DealSwordDamage`))
+    (if (`self.IsEnemy`)
+      (`KismetSystemLibrary.Delay` 0.48)
+      (else (`KismetSystemLibrary.Delay` 0.08)))
+    (if (and (not (`self.IsDead`)) (not (`self.SceneLocked`)))
+      (`AnimInstance.StopSlotAnimation` (`SkeletalMeshComponent.GetAnimInstance` (`self.Mesh`)) 0.12 "DefaultSlot"))
+    (if (`self.IsEnemy`)
+      (`KismetSystemLibrary.Delay` 0.4))
+    (set `self.IsAttacking` false)))
+

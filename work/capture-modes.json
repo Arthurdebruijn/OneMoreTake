@@ -1,0 +1,3 @@
+Function "ListModes", input params are required by the function input schema Json, but incoming function input params Json is empty.
+Function schema Json -
+{"type":"object","properties":{"bIncludeUnavailable":{"type":"boolean","description":"Also list modes this build or session cannot capture, with bAvailable false and UnavailableReason set."}},"required":["bIncludeUnavailable"],"additionalProperties":false}

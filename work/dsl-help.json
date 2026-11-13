@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tools\":{},\"errors\":{\"Write\":\"Tool 'Write' not found.\",\"Help\":\"Tool 'Help' not found.\"}}"
+      }
+    ]
+  }
+}

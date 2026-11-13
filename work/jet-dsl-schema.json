@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tools\":{\"BlueprintToolsets.BlueprintDslToolset.Write\":{\"description\":\"Transactionally applies a DSL document and returns its canonical form and a new revision. A\\nfailure leaves the asset unchanged.\\n\\nUse Write for a complete document or a large structural change. Use Edit for a targeted\\nchange that can be expressed as exact replacements against text you just read.\\n\\nTop-level entries use upsert semantics: omitted entries remain and produce a warning. Delete an\\nentry with a tombstone such as (event `Foo` :!delete). Deleting a missing entry only warns.\\n\\nDsl is omitted when bDslOmitted is true because the submitted document is already canonical.\",\"name\":\"BlueprintToolsets.BlueprintDslToolset.Write\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"assetPath\":{\"type\":\"string\",\"description\":\"Content-browser path to the Blueprint.\"},\"dsl\":{\"type\":\"string\",\"description\":\"Complete DSL document to apply to the selected scope.\"},\"scope\":{\"type\":\"string\",\"description\":\"Sub-document selector; empty selects the whole asset.\",\"default\":\"\"}},\"required\":[\"assetPath\",\"dsl\"],\"additionalProperties\":false},\"outputSchema\":{\"type\":\"object\",\"properties\":{\"returnValue\":{\"title\":\"GraphDslWriteResult\",\"type\":\"object\",\"properties\":{\"dsl\":{\"type\":\"string\",\"description\":\"The canonical DSL after the operation. Empty when bDslOmitted is true: the result is exactly the text you could predict, so it is not repeated.\",\"default\":\"\"},\"bDslOmitted\":{\"type\":\"boolean\",\"description\":\"True when Dsl is omitted: the canonical result is byte-identical to the text you could already predict, so your copy is correct as-is.\",\"default\":false},\"revision\":{\"type\":\"string\",\"description\":\"New revision token. Use this to anchor subsequent Edit calls.\",\"default\":\"\"},\"warnings\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Non-fatal issues; empty on a clean apply. Warnings do not mean the text changed: when bDslOmitted is true your copy still matches; when Dsl is present, it is the authoritative text.\",\"default\":[]}}}},\"required\":[\"returnValue\"]},\"annotations\":{\"accessMode\":\"execute\",\"readOnlyHint\":false}}},\"errors\":{}}"
+      }
+    ]
+  }
+}

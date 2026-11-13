@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tools\":{\"BlueprintToolsets.BlueprintToolset.GetGraph\":{\"description\":\"Retrieves a specific graph from a Blueprint asset by name.\",\"name\":\"BlueprintToolsets.BlueprintToolset.GetGraph\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"blueprint\":{\"type\":\"object\",\"title\":\"/Script/Engine.Blueprint\",\"required\":[\"refPath\"],\"properties\":{\"refPath\":{\"type\":\"string\",\"description\":\"The reference stored as a soft path string.\"}},\"description\":\"The Blueprint asset to search within.\"},\"graphName\":{\"type\":\"string\",\"description\":\"The name of the graph to retrieve (e.g. \\\"EventGraph\\\", \\\"MyFunction\\\").\"}},\"required\":[\"blueprint\",\"graphName\"],\"additionalProperties\":false},\"outputSchema\":{\"type\":\"object\",\"properties\":{\"returnValue\":{\"type\":\"object\",\"title\":\"/Script/Engine.EdGraph\",\"required\":[\"refPath\"],\"properties\":{\"refPath\":{\"type\":\"string\",\"description\":\"The reference stored as a soft path string.\"}},\"description\":\"The graph object matching the specified name.\"}},\"required\":[\"returnValue\"]},\"annotations\":{\"accessMode\":\"read\",\"readOnlyHint\":true}}},\"errors\":{\"BlueprintToolsets.BlueprintToolset.CreateGraph\":\"Tool 'BlueprintToolsets.BlueprintToolset.CreateGraph' not found.\"}}"
+      }
+    ]
+  }
+}

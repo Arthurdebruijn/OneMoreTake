@@ -1,0 +1,18 @@
+{"returnValue":"(node `SkeletalMeshComponent.PlayAnimation`\n  (in (`execute` Exec) (`self` SkeletalMeshComponent Object Reference) (`NewAnimToPlay` AnimationAsset Object Reference) (`bLooping` Boolean))\n  (out (`then` Exec)))"}
+{"returnValue":"(node `SkeletalMeshComponent.SetAnimationMode`\n  (in (`execute` Exec) (`self` SkeletalMeshComponent Object Reference) (`InAnimationMode` EAnimationMode Enum) (`bForceInitAnimScriptInstance` Boolean))\n  (out (`then` Exec)))"}
+{"returnValue":"(node `GameplayStatics.ApplyDamage`\n  (in (`execute` Exec) (`DamagedActor` Actor Object Reference) (`BaseDamage` Float (single-precision)) (`EventInstigator` Controller Object Reference) (`DamageCauser` Actor Object Reference) (`DamageTypeClass` DamageType Class Reference))\n  (out (`then` Exec) (`ReturnValue` Float (single-precision))))"}
+{"returnValue":"(node `GameplayStatics.GetAllActorsOfClass`\n  (in (`execute` Exec) (`ActorClass` Actor Class Reference))\n  (out (`then` Exec) (`OutActors` Array of Actor Object Reference)))"}
+Bad arguments:
+  [unknown-node-type] "self.ReceiveAnyDamage" names a function that is not BlueprintCallable; it can be implemented, with CreateEntryPoint("entry self.ReceiveAnyDamage").
+Bad arguments:
+  [unknown-node-type] "self.ReceiveTick" names a function that is not BlueprintCallable; it can be implemented, with CreateEntryPoint("entry self.ReceiveTick").
+{"returnValue":"(node `self.LaunchCharacter`\n  (in (`execute` Exec) (`self` Character Object Reference) (`LaunchVelocity` Vector Structure) (`bXYOverride` Boolean) (`bZOverride` Boolean))\n  (out (`then` Exec)))"}
+{"returnValue":"(node `self.GetDistanceTo`\n  (in (`self` Actor Object Reference) (`OtherActor` Actor Object Reference))\n  (out (`ReturnValue` Float (single-precision))))"}
+{"returnValue":"(node `KismetMathLibrary.Dot_VectorVector`\n  (in (`A` Vector Structure) (`B` Vector Structure))\n  (out (`ReturnValue` Float (double-precision))))"}
+{"returnValue":"(node `KismetMathLibrary.Normal`\n  (in (`A` Vector Structure) (`Tolerance` Float (single-precision)))\n  (out (`ReturnValue` Vector Structure)))"}
+{"returnValue":"(node `KismetMathLibrary.FindLookAtRotation`\n  (in (`Start` Vector Structure (by ref)) (`Target` Vector Structure (by ref)))\n  (out (`ReturnValue` Rotator Structure)))"}
+{"returnValue":"(node `SceneComponent.SetVisibility`\n  (in (`execute` Exec) (`self` SceneComponent Object Reference) (`bNewVisibility` Boolean) (`bPropagateToChildren` Boolean))\n  (out (`then` Exec)))"}
+Bad arguments:
+  [unknown-node-type] "DrawText" names no function on /Game/OneMoreTake/Blueprints/BP_KnightPlayer. Functions include: ActorHasTag, AddComponent, AddComponentByClass, AddControllerPitchInput, AddControllerRollInput, AddControllerYawInput, AddMovementInput, AddReplicatedSubObject, AddTickPrerequisiteActor, AddTickPrerequisiteComponent, ... Variables include: CameraBoom, FollowCamera, ActorGuid, ActorInstanceGuid, AIControllerClass, bAlwaysRelevant, BaseEyeHeight, bAutoDestroyWhenFinished, bCanAffectNavigationGeneration, bCanBeDamaged, .... Event dispatchers include: LandedDelegate, MovementModeChangedDelegate, OnActorBeginOverlap, OnActorEndOverlap, OnActorHit, OnBeginCursorOver, OnCharacterMovementUpdated, OnClicked, OnDestroyed, OnEndCursorOver, ....
+{"returnValue":"(node `KismetSystemLibrary.Delay`\n  (in (`execute` Exec) (`Duration` Float (single-precision)))\n  (out (`then` Exec)))"}
+{"returnValue":"(node `self.K2_DestroyActor`\n  (in (`execute` Exec) (`self` Actor Object Reference))\n  (out (`then` Exec)))"}

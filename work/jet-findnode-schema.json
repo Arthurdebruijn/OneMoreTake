@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tools\":{\"BlueprintToolsets.BlueprintDslToolset.Schema\":{\"description\":\"Returns one node type's schema as a DSL form. Query unfamiliar node types before writing:\\n\\n  (node `Type`\\n    (in (`Pin` Type) ...)              ; data input pins\\n    (out (`Pin` Type) ...)             ; data output pins\\n    (params (`Prop` Type [:over]) ...) ; writable properties, baked as :`Prop` value\\n    (determines `Prop` ...))           ; properties whose value changes the pin set\\n\\n(Enum A B ...) lists writable values. :over marks a property with an override input, supplied\\nas :`Prop` (wire Source). Write an (Instanced /Script/Pkg.Base) property with a concrete\\nclass-headed value: (class:/Script/Pkg.Concrete :`Field` value ...). Empty sections are omitted.\",\"name\":\"BlueprintToolsets.BlueprintDslToolset.Schema\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"assetPath\":{\"type\":\"string\",\"description\":\"Content-browser path to the Blueprint the node would be created in.\"},\"nodeType\":{\"type\":\"string\",\"description\":\"Node type as it appears as a DSL call head; backticks are optional.\"}},\"required\":[\"assetPath\",\"nodeType\"],\"additionalProperties\":false},\"outputSchema\":{\"type\":\"object\",\"properties\":{\"returnValue\":{\"type\":\"string\"}},\"required\":[\"returnValue\"]},\"annotations\":{\"accessMode\":\"execute\",\"readOnlyHint\":false}},\"BlueprintToolsets.BlueprintDslToolset.FindNodeReferences\":{\"description\":\"Returns Graph DSL node references whose palette name, category or reference contains the query\\n(case and spaces ignored), with each one's palette category and name. The reference, not the\\npalette name, is what goes in a Write or Edit call head.\",\"name\":\"BlueprintToolsets.BlueprintDslToolset.FindNodeReferences\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"assetPath\":{\"type\":\"string\",\"description\":\"Content-browser path to the Blueprint whose event graph (else first function graph) is searched.\"},\"query\":{\"type\":\"string\",\"description\":\"Text to look for, e.g. \\\"print string\\\".\"}},\"required\":[\"assetPath\",\"query\"],\"additionalProperties\":false},\"outputSchema\":{\"type\":\"object\",\"properties\":{\"returnValue\":{\"type\":\"string\"}},\"required\":[\"returnValue\"]},\"annotations\":{\"accessMode\":\"read\",\"readOnlyHint\":true}}},\"errors\":{}}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+import unreal,json
+bp=unreal.EditorAssetLibrary.load_asset('/Game/OneMoreTake/Blueprints/BP_KnightPlayer');assert unreal.EditorAssetLibrary.save_loaded_asset(bp)
+sub=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
+backup=[{'label':a.get_actor_label(),'location':[a.get_actor_location().x,a.get_actor_location().y,a.get_actor_location().z],'yaw':a.get_actor_rotation().yaw,'extra':a.get_editor_property('ExtraTakeTwoGuard'),'ragdoll':a.get_editor_property('UseEnemyRagdoll'),'push':a.get_editor_property('RagdollPushStrength'),'lift':a.get_editor_property('RagdollLiftStrength'),'attack_rate':a.get_editor_property('AttackPlayRate')} for a in sub.get_all_level_actors() if 'BP_Guard' in str(a.get_class())]
+json.dump(backup,open(unreal.Paths.project_dir()+'work/rifle_guard_backup.json','w'));assert unreal.get_editor_subsystem(unreal.LevelEditorSubsystem).save_current_level()
+folder='/Game/OneMoreTake/Animations/Retargeted/PlayerDeath';base='/Game/OneMoreTake/Animations/Death/Standing_React_Death_Backward'
+at=unreal.AssetToolsHelpers.get_asset_tools();source=unreal.EditorAssetLibrary.load_asset(base);target=unreal.EditorAssetLibrary.load_asset('/Game/CR/LQ/CharacterModular/Modular_012_Grian09/Mesh/SKM_Grian09_1');target_rig=unreal.EditorAssetLibrary.load_asset('/Game/OneMoreTake/Animations/Retargeted/IK_KnightCombat')
+rig=at.create_asset('IK_PlayerDeathSource',folder,unreal.IKRigDefinition,unreal.IKRigDefinitionFactory());assert rig;c=unreal.IKRigController.get_controller(rig);assert c.set_skeletal_mesh(source);assert c.apply_auto_generated_retarget_definition()
+rtg=at.create_asset('RTG_PlayerDeathToKnight',folder,unreal.IKRetargeter,unreal.IKRetargetFactory());assert rtg;rc=unreal.IKRetargeterController.get_controller(rtg);rc.set_ik_rig(unreal.RetargetSourceOrTarget.SOURCE,rig);rc.set_ik_rig(unreal.RetargetSourceOrTarget.TARGET,target_rig);rc.set_preview_mesh(unreal.RetargetSourceOrTarget.SOURCE,source);rc.set_preview_mesh(unreal.RetargetSourceOrTarget.TARGET,target);rc.add_default_ops();rc.auto_map_chains(unreal.AutoMapChainType.FUZZY,True);rc.auto_align_all_bones(unreal.RetargetSourceOrTarget.TARGET)
+for asset in [rig,rtg]:assert unreal.EditorAssetLibrary.save_loaded_asset(asset)
+result=unreal.IKRetargetBatchOperation.duplicate_and_retarget([unreal.EditorAssetLibrary.find_asset_data(base+'_Anim')],source,target,rtg,prefix='Player_',target_path=folder,include_referenced_assets=False);assert len(result)==1
+anim=unreal.EditorAssetLibrary.load_asset(str(result[0].package_name));count=round(anim.get_play_length()*30)+1;poses=[unreal.AnimPoseExtensions.get_anim_pose_at_time(anim,i/30,unreal.AnimPoseEvaluationOptions()) for i in range(count)]
+bones=[str(b) for b in unreal.AnimPoseExtensions.get_bone_names(poses[0])];children=[b for b in ['pelvis','ik_hand_root','ik_foot_root','interaction','center_of_mass'] if b in bones];roots=[unreal.AnimPoseExtensions.get_bone_pose(p,'root',unreal.AnimPoseSpaces.LOCAL) for p in poses]
+tracks={b:[unreal.AnimPoseExtensions.get_bone_pose(p,b,unreal.AnimPoseSpaces.LOCAL).multiply(r) for p,r in zip(poses,roots)] for b in children}
+ctrl=anim.get_editor_property('controller');ctrl.open_bracket('Preserve death fall while grounding the animation root')
+for bone,values in tracks.items():assert ctrl.set_bone_track_keys(bone,[t.translation for t in values],[t.rotation for t in values],[t.scale3d for t in values])
+assert ctrl.set_bone_track_keys('root',[unreal.Vector()]*count,[unreal.Quat(0,0,0,1)]*count,[unreal.Vector(1,1,1)]*count);ctrl.close_bracket();anim.set_editor_properties({'enable_root_motion':False,'force_root_lock':True,'root_motion_root_lock':unreal.RootMotionRootLock.REF_POSE});assert unreal.EditorAssetLibrary.save_loaded_asset(anim)
+report={'animation':anim.get_path_name(),'length':anim.get_play_length(),'retry_delay':round(anim.get_play_length()+0.45,3)}
+json.dump(report,open(unreal.Paths.project_dir()+'work/player_death_info.json','w'));report

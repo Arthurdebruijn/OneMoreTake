@@ -1,0 +1,168 @@
+{
+  "type": "object",
+  "properties": {
+    "world": {
+      "type": "object",
+      "title": "/Script/Engine.World",
+      "required": [
+        "refPath"
+      ],
+      "properties": {
+        "refPath": {
+          "type": "string",
+          "description": "The reference stored as a soft path string."
+        }
+      },
+      "description": "A world from ListWorlds."
+    },
+    "camera": {
+      "title": "SceneCaptureCamera",
+      "description": "Snapshot from ListViews or a caller-constructed view.",
+      "type": "object",
+      "properties": {
+        "location": {
+          "title": "Vector",
+          "description": "World-space capture location (cm).",
+          "default": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "default": 0
+            },
+            "y": {
+              "type": "number",
+              "default": 0
+            },
+            "z": {
+              "type": "number",
+              "default": 0
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "z"
+          ]
+        },
+        "rotation": {
+          "title": "Rotator",
+          "description": "World-space capture rotation.",
+          "required": [
+            "pitch",
+            "yaw",
+            "roll"
+          ],
+          "type": "object",
+          "properties": {
+            "pitch": {
+              "type": "number",
+              "description": "Pitch (degrees) around Y axis",
+              "default": 0
+            },
+            "yaw": {
+              "type": "number",
+              "description": "Yaw (degrees) around Z axis",
+              "default": 0
+            },
+            "roll": {
+              "type": "number",
+              "description": "Roll (degrees) around X axis",
+              "default": 0
+            }
+          },
+          "default": {
+            "pitch": 0,
+            "yaw": 0,
+            "roll": 0
+          }
+        },
+        "projectionMode": {
+          "type": "string",
+          "title": "ECameraProjectionMode",
+          "enum": [
+            "Perspective",
+            "Orthographic"
+          ],
+          "description": "Perspective or orthographic projection.",
+          "default": "Perspective"
+        },
+        "fOV": {
+          "type": "number",
+          "description": "Horizontal field of view in degrees, in (0, 180). Used for perspective projection.",
+          "default": 90
+        },
+        "orthoWidth": {
+          "type": "number",
+          "description": "Positive view width in cm. Used for orthographic projection.",
+          "default": 512
+        },
+        "perspectiveNearClipPlane": {
+          "description": "Positive perspective near clip distance in cm. Unset uses the engine default.",
+          "default": null,
+          "type": "number"
+        },
+        "orthographicClipPlanes": {
+          "description": "Orthographic near/far distances in cm (X/Y).\nTheir float span and reciprocal must be finite and positive. Unset uses automatic planes.",
+          "default": null,
+          "title": "Vector2D",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ]
+        }
+      }
+    },
+    "mode": {
+      "type": "string",
+      "description": "Which mode to capture; use ListModes to enumerate valid values."
+    },
+    "options": {
+      "title": "SceneCaptureOptions",
+      "description": "Resolution and diagnostic options. Supply all schema-required fields.",
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "integer",
+          "description": "Output image width in pixels. Must be > 0; values above r.SceneCaptureToolset.MaxResolution are clamped.",
+          "default": 1024
+        },
+        "height": {
+          "type": "integer",
+          "description": "Output image height in pixels. Must be > 0; values above r.SceneCaptureToolset.MaxResolution are clamped.",
+          "default": 1024
+        },
+        "screenPercentage": {
+          "type": "number",
+          "description": "Positive, finite per-axis internal resolution fraction; 0.5 renders about one quarter of the pixels.\nClamped to the renderer's minimum and 1. Output dimensions are unaffected by this fraction.",
+          "default": 1
+        },
+        "visualizationSubMode": {
+          "type": "string",
+          "description": "Sub-mode for VisualizeNanite, VisualizeVirtualShadowMap, VisualizeSubstrate or VisualizeMegaLights.\nEmpty selects the default listed by DescribeMode. Invalid names raise a script error.\nIgnored with a warning for other modes.",
+          "default": ""
+        }
+      }
+    }
+  },
+  "required": [
+    "world",
+    "camera",
+    "mode",
+    "options"
+  ],
+  "additionalProperties": false
+}

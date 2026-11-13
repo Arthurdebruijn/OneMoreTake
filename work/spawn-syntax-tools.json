@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"tools\":{},\"errors\":{\"BlueprintToolsets.BlueprintDslToolset.GetSyntax\":\"Tool 'BlueprintToolsets.BlueprintDslToolset.GetSyntax' not found.\",\"BlueprintToolsets.BlueprintToolset.FindNodeReferences\":\"Tool 'BlueprintToolsets.BlueprintToolset.FindNodeReferences' not found.\"}}"
+      }
+    ]
+  }
+}
