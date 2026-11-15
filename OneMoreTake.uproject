@@ -29,6 +29,10 @@
 		{
 			"Name": "AnimGenOffline",
 			"Enabled": true
+		},
+		{
+			"Name": "ProceduralVegetationEditor",
+			"Enabled": true
 		}
 	]
 }
